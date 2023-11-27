@@ -73,7 +73,7 @@ const Navabar = () => {
     </>
     useEffect(() => { }, [theme]);
     return (
-        <section className='fixed w-full inset-0 z-10 h-fit'>
+        <section className='fixed w-full inset-0 z-10 h-fit font-comforta'>
             <div className="flex justify-between items-center px-4 py-3 bg-slate-800 bg-opacity-60">
                 <section className='flex justify-between items-center w-full md:w-fit'>
                     <section className='flex gap-4 justify-center items-center'>

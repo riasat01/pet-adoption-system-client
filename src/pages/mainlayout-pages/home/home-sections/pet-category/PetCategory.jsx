@@ -7,7 +7,7 @@ import CategoryCard from './CategoryCard';
 const PetCategory = () => {
     const categories = [dog, cat, fish, rabbit];
     return (
-        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-24 mx-4 md:mx-12 lg:mx-24'>
             {
                 categories?.map((img, i) =>  <CategoryCard key={i} img={img}></CategoryCard>)
             }

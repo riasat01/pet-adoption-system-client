@@ -44,9 +44,9 @@ const Banner = () => {
             backgroundSize: 'cover',
             backgroundAttachment: 'fixed'
         }}
-            className="h-[100vh] flex flex-col md:flex-row justify-center items-center pt-16 px-4 md:px-12 lg:px-20 text-center lg:text-left">
+            className="h-[100vh] md:h-[50vh] lg:h-[80vh] flex flex-col md:flex-row justify-center items-center pt-16 px-4 md:px-12 lg:px-20 text-center lg:text-left">
 
-            <h1 ref={bannerTitle} style={{textShadow: '0 0 1rem pink'}} className="h-1/2 md:h-full md:w-1/2 text-2xl md:mx-0 md:text-3xl lg:text-6xl font-comforta text-transparent bg-gradient-to-br from-pink-600 to-pink-400 font-extrabold bg-clip-text pt-24 md:pt-0">Whiskers and Wags! Where Furry Friends Find Their Happily Ever After.</h1>
+            <h1 ref={bannerTitle} style={{textShadow: '0 0 1rem pink'}} className="h-1/2 md:h-fit my-auto md:w-1/2 text-2xl md:mx-0 md:text-3xl lg:text-6xl font-comforta text-transparent bg-gradient-to-br from-pink-600 to-pink-400 font-extrabold bg-clip-text pt-24 md:pt-0">Whiskers and Wags! Where Furry Friends Find Their Happily Ever After.</h1>
             
 
             <section className='h-1/2 md:h-full md:w-1/2 p-4 md:p-8 grid grid-cols-3 grid-rows-3 gap-4'>

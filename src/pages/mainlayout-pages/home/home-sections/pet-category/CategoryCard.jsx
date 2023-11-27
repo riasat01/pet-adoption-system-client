@@ -7,7 +7,7 @@ const CategoryCard = ({img}) => {
             backgroundBlendMode: 'overlay',
             backgroundSize: 'cover'
         }} 
-        className="h-[40vh] mt-12 md:mt-24 rounded-xl">
+        className="h-[40vh] rounded-xl">
             
         </div>
     );

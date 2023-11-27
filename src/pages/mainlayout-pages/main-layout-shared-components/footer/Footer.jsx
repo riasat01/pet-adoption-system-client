@@ -4,13 +4,13 @@ import { FaFacebook, FaInstagram, FaLinkedin, FaWhatsapp, FaYoutube } from "reac
 const Footer = () => {
     return (
         <>
-            <div className='p-4 md:p-12 lg:p-20 flex justify-between items-center bg-slate-900'>
-                <section className='w-1/3 flex flex-col justify-center items-center border-r-2'>
+            <div className='p-4 md:p-12 lg:p-20 flex flex-col md:flex-row justify-between items-center bg-slate-900'>
+                <section className='w-full md:w-1/3 flex flex-col justify-center items-center md:border-r-2 md:pr-2'>
                     <img className='h-36 w-36' src={logo} alt="" />
-                    <h1 className='text-white text-5xl font-semibold'>Pets<span className='bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-text font-bold text-6xl  text-transparent'>N</span>Pals</h1>
+                    <h1 className='text-white text-5xl font-semibold font-comforta'>Pets<span className='bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-text font-bold text-6xl  text-transparent'>N</span>Pals</h1>
                 </section>
-                <section className='w-2/3 space-y-6'>
-                    <ul className='flex gap-6 justify-center items-center flex-wrap'>
+                <section className='w-full md:w-2/3 space-y-6'>
+                    <ul className='flex gap-6 justify-center items-center flex-wrap font-comforta'>
                         <li>
                             <NavLink
                                 to="/"
