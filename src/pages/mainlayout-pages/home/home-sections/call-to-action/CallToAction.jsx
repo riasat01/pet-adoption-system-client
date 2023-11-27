@@ -10,24 +10,8 @@ const CallToAction = () => {
     const actionRef = useRef();
 
     useEffect(() => {
-        // gsap.from(actionRef.current, {
-        //     x: '100%',
-        //     duration: 5,
-        // })
-        // gsap.to(actionRef.current, {
-        //     x: '-100%',
-        //     duration: 5
-        // })
-        // gsap.from(actionRef.current,
-        //     {x: '100%', duration: 15, repeat: -1}
-        //     // {x: '-75%', duration: 15, repeat: -1}
-        // )
-    }, [])
-
-    useEffect(() => {
         axiosPublic.get('/call-to-action')
             .then(res => {
-                console.log(res?.data);
                 setCardInfo(res?.data);
             })
             .catch(error => console.log(error));

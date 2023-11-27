@@ -1,4 +1,4 @@
-
+import PropTypes from 'prop-types';
 
 const CategoryCard = ({img}) => {
     return (
@@ -12,5 +12,9 @@ const CategoryCard = ({img}) => {
         </div>
     );
 };
+
+CategoryCard.propTypes = {
+    img: PropTypes.string
+}
 
 export default CategoryCard;
