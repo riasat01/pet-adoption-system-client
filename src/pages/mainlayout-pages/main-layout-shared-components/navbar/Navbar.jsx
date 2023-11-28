@@ -157,7 +157,7 @@ const Navabar = () => {
                                     </details>
                                 </section>
                                 :
-                                <Link to='/login'><button className='px-5 py-2 rounded-lg bg-transparent hover:bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[1px_-1px_1rem_0px_pink] '>Login</button></Link>
+                                <Link to='/login'><Button text={'Login/Register'}></Button></Link>
                     }
                 </section>
             </div>

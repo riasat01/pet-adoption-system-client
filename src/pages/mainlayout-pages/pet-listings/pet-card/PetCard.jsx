@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import Button from '../../../../shared-components/Button';
 
 const PetCard = ({ pet }) => {
     const { _id, imageURL, name, age, location, date, category } = pet;
@@ -14,7 +13,7 @@ const PetCard = ({ pet }) => {
             <p><span className="font-bold">Posted at: </span>{postedDate?.toUTCString().slice(0, 16)}</p>
             <p><span className='font-bold'>Time: </span>{postedDate?.toUTCString().slice(17)}</p>
             <Link to={`/pet-details/${_id}`} className='grid grid-cols-1'>
-                <Button text={'Show Details'}></Button>
+                <button className='px-5 py-1 my-1 rounded-lg bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[0px_5px_2rem_1px_pink] font-comforta'>Show Details</button>
             </Link>
         </div>
     );
