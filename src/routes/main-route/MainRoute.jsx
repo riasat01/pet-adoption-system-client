@@ -5,6 +5,8 @@ import Home from "../../pages/mainlayout-pages/home/Home";
 import LoginPage from "../../pages/mainlayout-pages/login-page/LoginPage";
 import Login from "../../pages/mainlayout-pages/login-page/login/Login";
 import Register from "../../pages/mainlayout-pages/login-page/register/Register";
+import PetListings from "../../pages/mainlayout-pages/pet-listings/PetListings";
+import PetDetails from "../../pages/mainlayout-pages/pet-details/PetDetails";
 
 
 const MainRoute = createBrowserRouter ([
@@ -16,6 +18,14 @@ const MainRoute = createBrowserRouter ([
             {
                 path: '/',
                 element: <Home></Home>
+            },
+            {
+                path: '/pet-listing/:category',
+                element: <PetListings></PetListings>
+            },
+            {
+                path: '/pet-details/:id',
+                element: <PetDetails></PetDetails>
             },
             {
                 path: '/login',

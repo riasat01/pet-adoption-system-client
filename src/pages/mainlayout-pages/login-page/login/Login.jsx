@@ -29,6 +29,7 @@ const Login = () => {
     }
 
     const handlethirdPartySignIn = (callback) => {
+        console.log(callback, typeof callback);
         callback()
             .then(userCredintial => {
                 // console.log(userCredintial.user);
