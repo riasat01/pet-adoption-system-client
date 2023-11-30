@@ -8,6 +8,7 @@ import Register from "../../pages/mainlayout-pages/login-page/register/Register"
 import PetListings from "../../pages/mainlayout-pages/pet-listings/PetListings";
 import PetDetails from "../../pages/mainlayout-pages/pet-details/PetDetails";
 import PrivateRoute from "../private-route/PrivateRoute";
+import Dashboard from "../../layouts/mainlayout/dashboard-layout/Dashboard";
 
 
 const MainRoute = createBrowserRouter ([
@@ -41,6 +42,30 @@ const MainRoute = createBrowserRouter ([
                         element: <Register></Register>
                     }
                 ]
+            }
+        ]
+    },{
+        path: '/dashboard',
+        element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>,
+        children: [
+            // normal users
+            {
+                path: '/dashboard/add-a-pet'
+            },
+            {
+                path: '/dashboard/my-pets'
+            },
+            {
+                path: '/dashboard/adoption-request'
+            },
+            {
+                path: '/dashboard/create-campaign'
+            },
+            {
+                path: '/dashboard/my-campaign'
+            },
+            {
+                path: '/dashboard/donations'
             }
         ]
     }

@@ -71,6 +71,16 @@ const Navabar = () => {
                 Donation Campaigns
             </NavLink>
         </li>
+        <li>
+            <NavLink
+                to="/dashboard"
+                className={({ isActive, isPending }) =>
+                    isPending ? "pending" : isActive ? "text-lg text-transparent font-semibold duration-500 bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-text drop-shadow-lg" : "text-white font-normal duration-500"
+                }
+            >
+                Dashboard
+            </NavLink>
+        </li>
     </>
     useEffect(() => { }, [theme]);
     return (
