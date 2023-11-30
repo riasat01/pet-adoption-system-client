@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import useAxiosSecure from "../../../custom-routes/useAxiosSecure";
+import useAxiosSecure from "../../../custom-hooks/useAxiosSecure";
 import AdoptModal from "./adopt-modal/AdoptModal";
 
 

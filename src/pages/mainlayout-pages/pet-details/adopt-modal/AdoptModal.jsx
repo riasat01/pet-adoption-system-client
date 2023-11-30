@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import { useContext } from 'react';
 import { UserAuth } from '../../../../authprovider/AuthProvider';
-import useAxiosSecure from '../../../../custom-routes/useAxiosSecure';
+import useAxiosSecure from '../../../../custom-hooks/useAxiosSecure';
 import swal from 'sweetalert';
 
 const AdoptModal = ({ showModal, setShowModal, pet }) => {

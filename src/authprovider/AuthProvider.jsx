@@ -1,8 +1,8 @@
 import { GoogleAuthProvider, createUserWithEmailAndPassword, deleteUser, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
-// import useAxiosSecure from "../custom-hooks/useAxiosSecure";
 import auth from "../firebase/firebase.config";
+import useAxiosSecure from "../custom-hooks/useAxiosSecure";
 
 export const UserAuth = createContext({});
 const googleProvider = new GoogleAuthProvider();
@@ -11,7 +11,7 @@ const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
     const [theme, setTheme] = useState('dark');
-    // const axiosSecure = useAxiosSecure();
+    const axiosSecure = useAxiosSecure();
 
     // create user with and password
     const userWithEmail = (email, password) => {
@@ -61,17 +61,17 @@ const AuthProvider = ({ children }) => {
             setUser(currentUser);
             setLoading(false);
             // if user exitst then issue a token
-            // if (loggeduser.email) {
-            //     axiosSecure.post('/jwt', loggeduser)
-            //         .then(res => {
-            //             console.log('token response', res.data);
-            //         })
-            // } else {
-            //     axiosSecure.post('/logout', loggeduser)
-            //         .then(res => {
-            //             console.log(res.data);
-            //         })
-            // }
+            if (loggeduser.email) {
+                axiosSecure.post('/jwt', loggeduser)
+                    .then(res => {
+                        console.log('token response', res.data);
+                    })
+            } else {
+                axiosSecure.post('/logout', loggeduser)
+                    .then(res => {
+                        console.log(res.data);
+                    })
+            }
         });
         return () => {
             unsubscsribe();

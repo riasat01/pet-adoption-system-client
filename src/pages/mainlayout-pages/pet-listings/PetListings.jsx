@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import useAxiosPublic from "../../../custom-routes/useAxiosPublic";
+import useAxiosPublic from "../../../custom-hooks/useAxiosPublic";
 import { useParams } from "react-router-dom";
 import PetCard from "./pet-card/PetCard";
 import PetBanner from "./pet-banner/PetBanner";

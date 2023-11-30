@@ -3,7 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { FcGoogle } from 'react-icons/fc';
 import { UserAuth } from "../../../../authprovider/AuthProvider";
-import loginBg from '../../../../assets/images/login.jpg'
+import loginBg from '../../../../assets/images/login.jpg';
 
 const Login = () => {
     const { user, setLoading, loginWithEMail, continueWithGoogle } = useContext(UserAuth);
