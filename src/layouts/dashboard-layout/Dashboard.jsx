@@ -1,24 +1,25 @@
-import { FaAd, FaBook, FaCalendar, FaEnvelope, FaHome, FaList, FaSearch, FaShoppingCart, FaUsers, FaUtensils } from "react-icons/fa";
+import { FaBook, FaHome, FaList, FaUsers, FaUtensils } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
-import useAdmin from "../../../custom-hooks/useAdmin";
+// import useAdmin from "../../custom-hooks/useAdmin";
 import { BsFillMenuButtonWideFill } from "react-icons/bs";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { useState } from "react";
 
 
 const Dashboard = () => {
-    const [isAdmin] = useAdmin();
+    // const [isAdmin] = useAdmin();
+    const isAdmin = false; //NEED TO REEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEMOVEEEEEEEEEEEEEEEEEEEEEE
     console.log(isAdmin)
     const [showDrawer, setShowDrawer] = useState(false);
 
     return (
         <div className="flex font-comforta">
-            <section className="m-4 flex justify-between items-center lg:hidden absolute z-20">
+            <section className="m-0 flex justify-between items-center lg:hidden absolute z-20 w-fit">
                 <BsFillMenuButtonWideFill onClick={() => setShowDrawer(true)} className={`${showDrawer ? 'hidden' : 'block'} text-slate-800 text-2xl font-bold`}></BsFillMenuButtonWideFill>
                 <IoCloseCircleOutline  onClick={() => setShowDrawer(false)} className={`text-white text-4xl font-bold justify-self-end ${showDrawer ? 'block' : 'hidden'}`}></IoCloseCircleOutline>
             </section>
             {/* dashboard side bar */}
-            <div className={`w-64 min-h-screen bg-slate-700  absolute ${showDrawer ? 'left-0 duration-500' : '-left-96 duration-500'} lg:inset-0 z-10`}>
+            <div className={`w-64 min-h-screen h-full bg-slate-700  absolute ${showDrawer ? 'left-0 duration-500' : '-left-96 duration-500'} lg:inset-0 z-10`}>
 
                 <ul className="menu p-4 text-white space-y-6 mt-12 lg:mt-0">
                     {
@@ -126,7 +127,7 @@ const Dashboard = () => {
                 </ul>
             </div>
             {/* dashboard content */}
-            <div className="flex-1 p-8">
+            <div className="flex-1 p-0">
                 <Outlet></Outlet>
             </div>
         </div>

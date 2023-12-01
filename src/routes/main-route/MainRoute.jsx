@@ -8,8 +8,8 @@ import Register from "../../pages/mainlayout-pages/login-page/register/Register"
 import PetListings from "../../pages/mainlayout-pages/pet-listings/PetListings";
 import PetDetails from "../../pages/mainlayout-pages/pet-details/PetDetails";
 import PrivateRoute from "../private-route/PrivateRoute";
-import Dashboard from "../../layouts/mainlayout/dashboard-layout/Dashboard";
-
+import Dashboard from "../../layouts/dashboard-layout/Dashboard";
+import AddAPet from "../../pages/dashboard-pages/user-pages/add-a-pet/AddAPet";
 
 const MainRoute = createBrowserRouter ([
     {
@@ -50,7 +50,8 @@ const MainRoute = createBrowserRouter ([
         children: [
             // normal users
             {
-                path: '/dashboard/add-a-pet'
+                path: '/dashboard/add-a-pet',
+                element: <PrivateRoute><AddAPet></AddAPet></PrivateRoute>
             },
             {
                 path: '/dashboard/my-pets'
