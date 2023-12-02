@@ -43,7 +43,7 @@ const AddAPet = () => {
                 <section className="flex justify-center items-center">
                     <Formik
                         initialValues={{ image: '', name: '', age: '', category: '', location: '', shortD: '', longD: '' }}
-                        onSubmit={(values, { setSubmitting }) => {
+                        onSubmit={(values, { setSubmitting, resetForm }) => {
                             console.log(values, setSubmitting);
                             const pet = {
                                 imageURL: values?.image,
@@ -60,7 +60,8 @@ const AddAPet = () => {
                             axiosSecure.post('/pets', pet)
                             .then(res => {
                                 console.log(res);
-                                swal(`Congratulations ${user?.displayName}`, `You have successfully added ${pet?.name} as a pet to adopt`, 'success')
+                                swal(`Congratulations ${user?.displayName}`, `You have successfully added ${pet?.name} as a pet to adopt`, 'success');
+                                resetForm();
                             })
                             .catch(error => {
                                 console.log(error);

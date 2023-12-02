@@ -16,23 +16,10 @@ const CreateDonationCampaign = () => {
 
 
     const handleFileUpload = async (setFieldValue, file) => {
-        // const imageFile = { image: file };
-        // const res = await axiosPublic.post(image_hosting_api, imageFile, {
-        //     headers: {
-        //         'content-type': 'multipart/form-data'
-        //     }
-        // });
-        // if (res.data.success) {
-        //     setFieldValue('image', res.data.data.display_url);
-        // }
-        // VITE_CLOUDINARY_CLOUD_NAME: dklo62pbq
-        // VITE_CLOUDINARY_API_KEY = 984959197737687
-        // VITE_CLOUDINARY_API_SECRET = 2eBdmGin3qvnQuUMupw5h - Jhqq4
-        // VITE_CLOUDINARY_UPLOAD_PRESET = ybptt3us
         const data = new FormData();
         data?.append('file', file);
         data?.append("upload_preset", import.meta.env.VITE_CLOUDINARY_UPLOAD_PRESET);
-        data?.append("cloud_name", "dklo62pbq");
+        data?.append("cloud_name", cloudinaryCloudName);
         const res = await axiosPublic.post(image_hosting_api, data, {
             headers: {
                 'content-type': 'multipart/form-data'
@@ -54,12 +41,13 @@ const CreateDonationCampaign = () => {
                 <section className="flex justify-center items-center">
                     <Formik
                         initialValues={{ image: '', name: '', maxAmount: '', lastDate: '', shortD: '', longD: '' }}
-                        onSubmit={(values, { setSubmitting }) => {
+                        onSubmit={(values, { setSubmitting, resetForm }) => {
                             // console.log(values, setSubmitting);
                             const donationCampaign = {
                                 imageURL: values?.image,
                                 name: values?.name,
                                 maxAmount: values?.maxAmount,
+                                donatedAmount: 0,
                                 lastDate: values?.lastDate,
                                 createdDate: new Date(),
                                 shortDescription: values?.shortD,
@@ -69,7 +57,8 @@ const CreateDonationCampaign = () => {
                             axiosSecure.post('/donation', donationCampaign)
                                 .then(res => {
                                     console.log(res);
-                                    swal(`Congratulations ${user?.displayName}`, `You have successfully added a donation campaign`, 'success')
+                                    swal(`Congratulations ${user?.displayName}`, `You have successfully added a donation campaign`, 'success');
+                                    resetForm();
                                 })
                                 .catch(error => {
                                     console.log(error);
