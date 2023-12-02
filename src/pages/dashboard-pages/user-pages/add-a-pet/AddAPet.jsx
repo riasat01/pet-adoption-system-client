@@ -38,7 +38,7 @@ const AddAPet = () => {
             backgroundBlendMode: 'overlay',
             backgroundSize: 'cover',
             backgroundAttachment: 'fixed'
-        }} className="w-screen min-h-screen h-full">
+        }} className="w-full min-h-screen h-full">
             <section className="w-full md:w-1/2 lg:w-1/3 mx-auto h-screen pt-24 pb-12">
                 <section className="flex justify-center items-center">
                     <Formik

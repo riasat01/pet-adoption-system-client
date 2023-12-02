@@ -14,14 +14,14 @@ const Dashboard = () => {
 
     return (
         <div className="flex font-comforta">
-            <section className="m-0 flex justify-between items-center lg:hidden absolute z-20 w-fit">
+            <section className="p-4 bg-pink-400 flex justify-between items-center lg:hidden absolute h-fit z-20 w-fit">
                 <BsFillMenuButtonWideFill onClick={() => setShowDrawer(true)} className={`${showDrawer ? 'hidden' : 'block'} text-slate-800 text-2xl font-bold`}></BsFillMenuButtonWideFill>
                 <IoCloseCircleOutline  onClick={() => setShowDrawer(false)} className={`text-white text-4xl font-bold justify-self-end ${showDrawer ? 'block' : 'hidden'}`}></IoCloseCircleOutline>
             </section>
             {/* dashboard side bar */}
-            <div className={`w-64 min-h-screen h-full bg-slate-700  absolute ${showDrawer ? 'left-0 duration-500' : '-left-96 duration-500'} lg:inset-0 z-10`}>
+            <div className={`w-64 min-h-screen h-full bg-slate-700  absolute lg:relative ${showDrawer ? 'left-0 duration-500' : '-left-96 duration-500'} lg:inset-0 z-10`}>
 
-                <ul className="menu p-4 text-white space-y-6 mt-12 lg:mt-0">
+                <ul className="bg-slate-700 p-4 text-white space-y-6 mt-12 lg:mt-0">
                     {
                         isAdmin ? <>
                             <li>

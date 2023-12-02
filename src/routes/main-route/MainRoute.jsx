@@ -10,6 +10,8 @@ import PetDetails from "../../pages/mainlayout-pages/pet-details/PetDetails";
 import PrivateRoute from "../private-route/PrivateRoute";
 import Dashboard from "../../layouts/dashboard-layout/Dashboard";
 import AddAPet from "../../pages/dashboard-pages/user-pages/add-a-pet/AddAPet";
+import MyPets from "../../pages/dashboard-pages/user-pages/my-pets/MyPets";
+import UpdatePet from "../../pages/dashboard-pages/user-pages/update-pet/UpdatePet";
 
 const MainRoute = createBrowserRouter ([
     {
@@ -54,7 +56,12 @@ const MainRoute = createBrowserRouter ([
                 element: <PrivateRoute><AddAPet></AddAPet></PrivateRoute>
             },
             {
-                path: '/dashboard/my-pets'
+                path: '/dashboard/update-a-pet/:id',
+                element: <PrivateRoute><UpdatePet></UpdatePet></PrivateRoute>
+            },
+            {
+                path: '/dashboard/my-pets',
+                element: <PrivateRoute><MyPets></MyPets></PrivateRoute>
             },
             {
                 path: '/dashboard/adoption-request'

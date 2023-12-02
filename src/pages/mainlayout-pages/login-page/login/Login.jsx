@@ -16,17 +16,16 @@ const Login = () => {
     // sign in user
     const handleSignIn = (e) => {
         e?.preventDefault();
-        console.log(e?.target?.file?.value)
-        // loginWithEMail(e?.target?.email?.value, e?.target?.password?.value)
-        //     .then(userCredintial => {
-        //         console.log(userCredintial.user);
-        //         swal(`Congratulation ${user?.displayName ? user?.displayName : ``}`, `You have successfully signed in`, `success`)
-        //         location?.state ? navigate(`${location?.state}`) : navigate(`/`);
-        //     })
-        //     .catch(error => {
-        //         swal(`Error`, error.message, `error`);
-        //         setLoading(false);
-        //     })
+        loginWithEMail(e?.target?.email?.value, e?.target?.password?.value)
+            .then(userCredintial => {
+                console.log(userCredintial.user);
+                swal(`Congratulation ${user?.displayName ? user?.displayName : ``}`, `You have successfully signed in`, `success`)
+                location?.state ? navigate(`${location?.state}`) : navigate(`/`);
+            })
+            .catch(error => {
+                swal(`Error`, error.message, `error`);
+                setLoading(false);
+            })
     }
 
     const handlethirdPartySignIn = (callback) => {
@@ -53,7 +52,6 @@ const Login = () => {
                 <section className="flex justify-center items-center">
                     <form onSubmit={handleSignIn} className="space-y-6">
                         <input className="w-full text-white rounded-2xl py-2 px-4 bg-slate-400 bg-opacity-70" type="email" name="eamil" placeholder="Email" id="email" required />
-                        <input className="w-full text-white rounded-2xl py-2 px-4 bg-slate-400 bg-opacity-70" type="file" name="file" placeholder="Email" id="email" required />
                         <input className="w-full text-white rounded-2xl py-2 px-4 bg-slate-400 bg-opacity-70" type="password" name="password" placeholder="Password" id="password" required />
                         <input className="w-full px-5 py-2 rounded-2xl bg-transparent hover:bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[1px_-1px_1rem_0px_pink] " type="submit" value="Login" />
                         <p className="text-white">New here? Please <Link to='/login/register' className="font-semibold text-transparent bg-gradient-to-tr from-pink-600 to-pink-400 bg-clip-text border-b-2 border-pink-600">Register</Link></p>
