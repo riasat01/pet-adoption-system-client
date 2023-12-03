@@ -146,7 +146,7 @@ const Navabar = () => {
                             :
                             user ?
                                 <section className="flex gap-6 items-center">
-                                    <details className="dropdown dropdown-end">
+                                    {/* <details className="dropdown dropdown-end">
                                         <summary className="p-0 btn bg-transparent hover:bg-transparent border-0">
                                             {
                                                 user?.photoURL ?
@@ -164,7 +164,28 @@ const Navabar = () => {
                                             <li><p>{user.displayName}</p></li>
                                             <li><button onClick={handleSignOut} className='px-5 py-1 my-1 rounded-lg bg-slate-400 bg-opacity-50 hover:bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[0px_5px_2rem_1px_pink] '>Log Out</button></li>
                                         </ul>
+                                    </details> */}
+                                    <details className="relative">
+                                        <summary className="p-0 bg-transparent hover:bg-transparent border-0">
+                                            {
+                                                user?.photoURL ?
+                                                    <img className="h-14 w-14 rounded-full" src={user?.photoURL} alt={`image of ${user.displayName}`} />
+                                                    :
+                                                    <div className="w-16 h-16 bg-gray-200 text-gray-700 rounded-full flex items-center justify-center">
+                                                        <span className="text-xl font-medium">{user?.displayName.charAt(0)}</span>
+                                                    </div>
+                                            }
+                                        </summary>
+                                        <ul className="absolute right-0 mt-2 p-2 w-52 bg-white border rounded shadow-md">
+                                            <li><p className="text-gray-900">{user.displayName}</p></li>
+                                            <li>
+                                                <button onClick={handleSignOut} className='w-full px-4 py-2 mt-2 text-lg font-semibold text-white rounded bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700'>
+                                                    Log Out
+                                                </button>
+                                            </li>
+                                        </ul>
                                     </details>
+
                                 </section>
                                 :
                                 <Link to='/login'><Button text={'Login/Register'}></Button></Link>

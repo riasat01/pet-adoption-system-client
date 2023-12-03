@@ -4,10 +4,12 @@ import swal from "sweetalert";
 import { FcGoogle } from 'react-icons/fc';
 import { UserAuth } from "../../../../authprovider/AuthProvider";
 import loginBg from '../../../../assets/images/login.jpg';
+import useAxiosPublic from "../../../../custom-hooks/useAxiosPublic";
 
 const Login = () => {
     const { user, setLoading, loginWithEMail, continueWithGoogle } = useContext(UserAuth);
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
 
     // where to re route
     const location = useLocation();
@@ -31,10 +33,16 @@ const Login = () => {
     const handlethirdPartySignIn = (callback) => {
         console.log(callback, typeof callback);
         callback()
-            .then(userCredintial => {
-                // console.log(userCredintial.user);
-                swal(`Congratulation ${userCredintial?.user?.displayName}`, `You have successfully signed in with Google`, `success`)
-                location?.state ? navigate(`${location?.state}`) : navigate(`/`);
+            .then(userCredential => {
+                console.log(userCredential.user);
+                axiosPublic.post('/user', { imageURL: userCredential?.user?.photoURL, name: userCredential?.user?.displayName, email: userCredential?.user?.email })
+                    .then(res => {
+                        console.log(res);
+                        setLoading(false);
+                        swal(`Congratulation ${userCredential?.user?.user?.displayName}`, `You have successfully signed in with Google`, `success`)
+                        location?.state ? navigate(`${location?.state}`) : navigate(`/`);
+                    })
+
             })
             .catch(error => {
                 swal(`Error`, error.message, `error`);

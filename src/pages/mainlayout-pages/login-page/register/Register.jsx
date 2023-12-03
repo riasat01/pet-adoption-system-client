@@ -2,12 +2,14 @@ import { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import swal from "sweetalert";
 import { UserAuth } from "../../../../authprovider/AuthProvider";
-import registerBg from '../../../../assets/images/register.jpg'
+import registerBg from '../../../../assets/images/register.jpg';
+import useAxiosPublic from '../../../../custom-hooks/useAxiosPublic'
 
 
 const Register = () => {
     const { setLoading, userWithEmail, setUserName } = useContext(UserAuth);
     const navigate = useNavigate();
+    const axiosPublic = useAxiosPublic();
 
     // where to re route
     const location = useLocation();
@@ -35,9 +37,14 @@ const Register = () => {
                 setUserName(name, photo)
                     .then(() => {
                         // console.log(`user name updated`);
-                        setLoading(false);
-                        swal(`Congratulation ${userCredential?.user?.displayName}`, `You have successfully registered`, `success`)
-                        location?.state ? navigate(`${location?.state}`) : navigate(`/`);
+                        axiosPublic.post('/user', {imageURL: userCredential?.user?.photoURL, name: userCredential?.user?.displayName, email: userCredential?.user?.email})
+                        .then(res => {
+                            console.log(res);
+                            setLoading(false);
+                            swal(`Congratulation ${userCredential?.user?.displayName}`, `You have successfully registered`, `success`)
+                            location?.state ? navigate(`${location?.state}`) : navigate(`/`);
+                        })
+                        .catch(error => console.log(error));
                     })
                     .catch(error => {
                         swal(`Error`, error.message, `error`);

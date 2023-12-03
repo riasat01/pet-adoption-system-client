@@ -1,15 +1,13 @@
-import { useContext, useState } from "react";
 import useAxiosSecure from "../../../../custom-hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { UserAuth } from "../../../../authprovider/AuthProvider";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
 
 
 const MyDonationCampaign = () => {
     const axiosSecure = useAxiosSecure();
     const { user } = useContext(UserAuth);
-    // const [percentage, setPercentage] = useState(9);
-
     const { data: myDonations = [], refetch } = useQuery({
         queryKey: ['myDonation'],
         queryFn: async () => {
@@ -48,7 +46,7 @@ const MyDonationCampaign = () => {
                                 <button className='px-5 py-1 my-1 rounded-lg bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[0px_5px_2rem_1px_pink] font-comforta'>Pause</button>
                             </td>
                             <td>
-                                <Link to={'/dashboard/edit-campaign'}>
+                                <Link to={`/dashboard/edit-campaign/${donation?._id}`}>
                                     <button className='px-5 py-1 my-1 rounded-lg bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[0px_5px_2rem_1px_pink] font-comforta'>Edit</button>
                                 </Link>
                             </td>
