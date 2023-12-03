@@ -1,12 +1,14 @@
 import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../../custom-hooks/useAxiosSecure";
 import { useEffect, useState } from "react";
+import DonationModal from "./donation-modal/DonationModal";
 
 
 const DonationDetails = () => {
     const { id } = useParams();
     const axiosSecure = useAxiosSecure();
-    const [donation, setDonation] = useState({})
+    const [donation, setDonation] = useState({});
+    const [showModal, setShowModal] = useState(false);
 
     useEffect(() => {
         axiosSecure.get(`/donation/id/${id}`)
@@ -22,7 +24,8 @@ const DonationDetails = () => {
             <h2><span className="font-bold">Pet Name: </span>{donation?.name}</h2>
             <p><span className="font-bold">Donated: </span>${donation?.donatedAmount}</p>
             <p><span className="font-bold">Maximum Donation: </span>${donation?.maxAmount}</p>
-            <button className='px-5 py-1 my-1 rounded-lg bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[0px_5px_2rem_1px_pink] font-comforta'>Show Details</button>
+            <button onClick={() => setShowModal(true)} className='px-5 py-1 my-1 rounded-lg bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[0px_5px_2rem_1px_pink] font-comforta'>Donate</button>
+            <DonationModal showModal={showModal} setShowModal={setShowModal} donation={donation}></DonationModal>
         </div>
     );
 };
