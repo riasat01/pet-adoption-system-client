@@ -4,7 +4,7 @@ import { UserAuth } from "../authprovider/AuthProvider";
 // import { useNavigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
-    baseURL: 'https://pets-n-pals-server.vercel.app',
+    baseURL: 'https://pets-n-pals-server.vercel.app', //https://pets-n-pals-server.vercel.app
     withCredentials: true
 });
 

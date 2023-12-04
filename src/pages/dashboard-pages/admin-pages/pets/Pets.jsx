@@ -24,7 +24,13 @@ const Pets = () => {
         axiosSecure.put(`/pets/updatestatus/${id}`)
             .then(res => {
                 console.log(res);
-                swal('Congratulations', 'successfully updated adoption status', 'success');
+                axiosSecure.put(`/adopted/${id}`, { adopted: true })
+                    .then(res => {
+                        console.log(res);
+                        refetch();
+                        swal('Congratulations', 'successfully updated adoption status', 'success');
+                    })
+                    .catch(error => console.log(error));
                 refetch();
             })
             .catch(error => {
@@ -36,7 +42,13 @@ const Pets = () => {
         axiosSecure.put(`/pets/makeNotAdopted/${id}`)
             .then(res => {
                 console.log(res);
-                swal('Congratulations', 'successfully updated adoption status', 'success');
+                axiosSecure.put(`/adopted/${id}`, { adopted: false })
+                    .then(res => {
+                        console.log(res);
+                        refetch();
+                        swal('Congratulations', 'successfully updated adoption status', 'success');
+                    })
+                    .catch(error => console.log(error));
                 refetch();
             })
             .catch(error => {

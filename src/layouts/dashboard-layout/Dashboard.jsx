@@ -59,6 +59,12 @@ const Dashboard = () => {
                                 </NavLink>
                             </li>
                             <li>
+                                <NavLink to="/dashboard/adoption-request"
+                                    className={({ isPending, isActive }) => isPending ? "pending" : isActive ? 'bg-slate-400 bg-opacity-50 px-8 py-2 duration-500 rounded-lg' : ''}>
+                                    My adoption requests
+                                </NavLink>
+                            </li>
+                            <li>
                                 <NavLink to="/dashboard/create-campaign"
                                     className={({ isPending, isActive }) => isPending ? "pending" : isActive ? 'bg-slate-400 bg-opacity-50 px-8 py-2 duration-500 rounded-lg' : ''}>
                                     Create Donation Campaign
@@ -89,6 +95,12 @@ const Dashboard = () => {
                                     <NavLink to="/dashboard"
                                         className={({ isPending, isActive }) => isPending ? "pending" : isActive ? 'bg-slate-400 bg-opacity-50 px-8 py-2 duration-500 rounded-lg' : ''}>
                                         My added pets
+                                    </NavLink>
+                                </li>
+                                <li>
+                                    <NavLink to="/dashboard/adoption-request"
+                                        className={({ isPending, isActive }) => isPending ? "pending" : isActive ? 'bg-slate-400 bg-opacity-50 px-8 py-2 duration-500 rounded-lg' : ''}>
+                                        My adoption requests
                                     </NavLink>
                                 </li>
                                 <li>

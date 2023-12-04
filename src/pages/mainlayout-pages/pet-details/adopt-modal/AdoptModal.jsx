@@ -14,18 +14,15 @@ const AdoptModal = ({ showModal, setShowModal, pet }) => {
         const adoptInfo = {
             name: user?.displayName,
             email: user?.email,
+            phone: e?.target?.phone?.value,
+            location: e?.target?.address?.value,
             pet: pet,
             adoptedDate: new Date()
         }
         axiosSecure.post('/adopted', adoptInfo)
         .then(res => {
             console.log(res?.data);
-            axiosSecure.put(`/pets/${pet?._id}`, {adopted: true})
-            .then(res => {
-                console.log(res);
-                swal('congratulations', `${user?.displayName} you have successfully adopted ${pet?.name}`, 'success');
-            })
-            .catch(error => console.log(error));
+            swal('congratulations', `${user?.displayName} you have successfully submitted adoption request ${pet?.name}`, 'success');
         })
         .catch(error => console.log(error));
         setShowModal(false);
