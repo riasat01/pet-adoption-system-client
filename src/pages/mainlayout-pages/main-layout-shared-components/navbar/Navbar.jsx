@@ -27,20 +27,9 @@ const Navabar = () => {
                 swal(`Error`, error.message, `error`);
             });
     }
-    const handleTheme = () => {
-        toggleTheme();
-    }
 
     // navlinks
     const navLlinks = <>
-        <li onClick={handleTheme} className='text-center my-2 md:my-0'>
-            {
-                toggle ?
-                    <BsSun onClick={() => setToggle(!toggle)} className='w-fit text-white text-xl font-semibold'></BsSun>
-                    :
-                    <BsMoonStarsFill onClick={() => setToggle(!toggle)} className='w-fit text-white text-xl font-semibold'></BsMoonStarsFill>
-            }
-        </li>
         <li>
             <NavLink
                 to="/"
