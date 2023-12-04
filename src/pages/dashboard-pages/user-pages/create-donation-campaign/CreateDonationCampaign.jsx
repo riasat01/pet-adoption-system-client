@@ -5,6 +5,7 @@ import { useContext } from 'react';
 import { UserAuth } from '../../../../authprovider/AuthProvider';
 import useAxiosSecure from '../../../../custom-hooks/useAxiosSecure';
 import swal from 'sweetalert';
+import { useNavigate } from 'react-router-dom';
 
 const cloudinaryCloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 const image_hosting_api = `https://api.cloudinary.com/v1_1/${cloudinaryCloudName}/image/upload`;
@@ -13,6 +14,7 @@ const CreateDonationCampaign = () => {
     const { user } = useContext(UserAuth);
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
+    const navigate = useNavigate();
 
 
     const handleFileUpload = async (setFieldValue, file) => {
@@ -60,6 +62,7 @@ const CreateDonationCampaign = () => {
                                     console.log(res);
                                     swal(`Congratulations ${user?.displayName}`, `You have successfully added a donation campaign`, 'success');
                                     resetForm();
+                                    navigate('/dashboard/my-campaign')
                                 })
                                 .catch(error => {
                                     console.log(error);
@@ -78,7 +81,7 @@ const CreateDonationCampaign = () => {
 
                                 <Field className="w-full text-white rounded-2xl py-2 px-4 bg-slate-400 bg-opacity-70" type="text" name="shortD" placeholder="Short Description" required />
                                 <Field as='textarea' className="w-full h-36 text-white rounded-2xl py-2 px-4 bg-slate-400 bg-opacity-70" type="text" name="longD" placeholder="Long Description" required />
-                                <button className="w-full px-5 py-2 rounded-2xl bg-transparent hover:bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[1px_-1px_1rem_0px_pink] " type="submit" disabled={isSubmitting}>Login</button>
+                                <button className="w-full px-5 py-2 rounded-2xl bg-transparent hover:bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[1px_-1px_1rem_0px_pink] " type="submit" disabled={isSubmitting}>Add</button>
                             </Form>
                         )}
                     </Formik>

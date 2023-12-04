@@ -77,7 +77,7 @@ const MainRoute = createBrowserRouter ([
                 element: <PrivateRoute><UpdatePet></UpdatePet></PrivateRoute>
             },
             {
-                path: '/dashboard/my-pets',
+                path: '/dashboard',
                 element: <PrivateRoute><MyPets></MyPets></PrivateRoute>
             },
             {
