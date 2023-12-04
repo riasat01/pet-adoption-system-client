@@ -17,6 +17,10 @@ import MyDonationCampaign from "../../pages/dashboard-pages/user-pages/my-donati
 import EditCampaign from "../../pages/dashboard-pages/user-pages/edit-campaign/EditCampaign";
 import Donation from "../../pages/mainlayout-pages/donation/Donation";
 import DonationDetails from "../../pages/mainlayout-pages/donation-details/DonationDetails";
+import Users from "../../pages/dashboard-pages/admin-pages/users/Users";
+import AdminRoute from "../admin-route/AdminRoute"
+import Pets from "../../pages/dashboard-pages/admin-pages/pets/Pets";
+import Donations from "../../pages/dashboard-pages/admin-pages/donations/Donations";
 
 const MainRoute = createBrowserRouter ([
     {
@@ -93,6 +97,20 @@ const MainRoute = createBrowserRouter ([
             },
             {
                 path: '/dashboard/donations'
+            },
+
+            // admin only routes
+            {
+                path: '/dashboard/users',
+                element: <AdminRoute><Users></Users></AdminRoute>
+            },
+            {
+                path: '/dashboard/pets',
+                element: <AdminRoute><Pets></Pets></AdminRoute>
+            },
+            {
+                path: '/dashboard/admin/donations',
+                element: <AdminRoute><Donations></Donations></AdminRoute>
             }
         ]
     }

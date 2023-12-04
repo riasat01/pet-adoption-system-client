@@ -15,6 +15,20 @@ const MyDonationCampaign = () => {
             return res?.data;
         }
     })
+
+    const handleState = (id, info) => {
+        const update = !info
+        console.log(update);
+
+        axiosSecure.put(`/donation/togglePaused/${id}`, {state: update})
+        .then(res => {
+            console.log(res);
+            refetch();
+        })
+        .catch(error => {
+            console.log(error);
+        })
+    }
     return (
         <table className="w-full overflow-x-auto text-center mt-24">
             <thead>
@@ -43,7 +57,13 @@ const MyDonationCampaign = () => {
                                 </section>
                             </td>
                             <td>
-                                <button className='px-5 py-1 my-1 rounded-lg bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[0px_5px_2rem_1px_pink] font-comforta'>Pause</button>
+                                {
+                                    donation?.isPaused ?
+                                    <button onClick={() => handleState(donation?._id, donation?.isPaused)} className='px-5 py-1 my-1 rounded-lg bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[0px_5px_2rem_1px_pink] font-comforta'>Resume</button>
+                                    :
+                                    <button onClick={() => handleState(donation?._id, donation?.isPaused)} className='px-5 py-1 my-1 rounded-lg bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[0px_5px_2rem_1px_pink] font-comforta'>Pause</button>
+                                }
+                                
                             </td>
                             <td>
                                 <Link to={`/dashboard/edit-campaign/${donation?._id}`}>

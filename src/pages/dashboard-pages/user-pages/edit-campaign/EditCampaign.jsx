@@ -5,7 +5,7 @@ import { useContext, useEffect, useState } from 'react';
 import { UserAuth } from '../../../../authprovider/AuthProvider';
 import useAxiosSecure from '../../../../custom-hooks/useAxiosSecure';
 import swal from 'sweetalert';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 const cloudinaryCloudName = import.meta.env.VITE_CLOUDINARY_CLOUD_NAME;
 const image_hosting_api = `https://api.cloudinary.com/v1_1/${cloudinaryCloudName}/image/upload`;
@@ -17,6 +17,7 @@ const EditCampaign = () => {
     const { user } = useContext(UserAuth);
     const axiosPublic = useAxiosPublic();
     const axiosSecure = useAxiosSecure();
+    const navigate = useNavigate();
 
     useEffect(() => {
         axiosSecure.get(`/donation/id/${id}`)
@@ -81,17 +82,19 @@ const EditCampaign = () => {
                                 imageURL: values?.image,
                                 name: values?.name,
                                 maxAmount: values?.maxAmount,
-                                donatedAmount: 0,
+                                donatedAmount: donation?.donatedAmount,
                                 lastDate: values?.lastDate || new Date(donation?.lastDate),
                                 createdDate: new Date(donation?.createdDate),
                                 shortDescription: values?.shortD,
                                 longDescription: values?.longD,
-                                email: user?.email
+                                email: user?.email,
+                                isPaused: false
                             }
                             axiosSecure.put(`/donation/${donation?._id}`, donationCampaign)
                                 .then(res => {
                                     console.log(res);
                                     swal(`Congratulations ${user?.displayName}`, `You have successfully updated the donation campaign`, 'success');
+                                    navigate('/dashboard/my-campaign')
                                 })
                                 .catch(error => {
                                     console.log(error);
@@ -102,15 +105,15 @@ const EditCampaign = () => {
                     >
                         {({ isSubmitting, setFieldValue }) => (
                             <Form className="space-y-6">
-                                <input className="w-full text-white rounded-2xl py-2 px-4 bg-slate-400 bg-opacity-70" type="file" name="image" placeholder="Choose Image" onChange={(event) => handleFileUpload(setFieldValue, event.currentTarget.files[0])} required />
+                                <input className="w-full text-white rounded-2xl py-2 px-4 bg-slate-400 bg-opacity-70" type="file" name="image" placeholder="Choose Image" onChange={(event) => handleFileUpload(setFieldValue, event.currentTarget.files[0])} />
                                 <Field className="w-full text-white rounded-2xl py-2 px-4 bg-slate-400 bg-opacity-70" type="text" name="name" placeholder="Pet Name" required />
                                 <Field className="w-full text-white rounded-2xl py-2 px-4 bg-slate-400 bg-opacity-70" type="number" name="maxAmount" placeholder="Maximum Donation Amount" required />
-                                <Field className="w-full text-white rounded-2xl py-2 px-4 bg-slate-400 bg-opacity-70" type="date" name="lastDate" placeholder={`${formatDate(donation?.lastDate)}`} required />
+                                <Field className="w-full text-white rounded-2xl py-2 px-4 bg-slate-400 bg-opacity-70" type="date" name="lastDate" placeholder={`${formatDate(donation?.lastDate)}`}/>
 
 
                                 <Field className="w-full text-white rounded-2xl py-2 px-4 bg-slate-400 bg-opacity-70" type="text" name="shortD" placeholder="Short Description" required />
                                 <Field as='textarea' className="w-full h-36 text-white rounded-2xl py-2 px-4 bg-slate-400 bg-opacity-70" type="text" name="longD" placeholder="Long Description" required />
-                                <button className="w-full px-5 py-2 rounded-2xl bg-transparent hover:bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[1px_-1px_1rem_0px_pink] " type="submit" disabled={isSubmitting}>Login</button>
+                                <button className="w-full px-5 py-2 rounded-2xl bg-transparent hover:bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[1px_-1px_1rem_0px_pink] " type="submit" disabled={isSubmitting}>Update</button>
                             </Form>
                         )}
                     </Formik>

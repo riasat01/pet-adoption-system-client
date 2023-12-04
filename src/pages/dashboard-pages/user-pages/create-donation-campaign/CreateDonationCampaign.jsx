@@ -52,7 +52,8 @@ const CreateDonationCampaign = () => {
                                 createdDate: new Date(),
                                 shortDescription: values?.shortD,
                                 longDescription: values?.longD,
-                                email: user?.email
+                                email: user?.email,
+                                isPaused: false
                             }
                             axiosSecure.post('/donation', donationCampaign)
                                 .then(res => {

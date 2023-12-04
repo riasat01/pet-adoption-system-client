@@ -5,7 +5,7 @@ import CheckOutForm from '../checkout-form/CheckOutForm';
 import { useState } from 'react';
 import swal from 'sweetalert';
 
-const stripePromise = await loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY);
+const stripePromise = loadStripe(import.meta.env.VITE_PAYMENT_GATEWAY);
 
 const DonationModal = ({ showModal, setShowModal, donation }) => {
     const { imageURL } = donation;

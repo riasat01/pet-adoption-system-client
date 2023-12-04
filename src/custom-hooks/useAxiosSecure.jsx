@@ -4,7 +4,7 @@ import { UserAuth } from "../authprovider/AuthProvider";
 // import { useNavigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://pets-n-pals-server.vercel.app',
     withCredentials: true
 });
 
@@ -25,7 +25,7 @@ const useAxiosSecure = () => {
     axiosSecure.interceptors.response.use(function (response) {
         return response;
     }, async (error) => {
-        const status = error.response.status;
+        const status = error.response?.status;
         console.log('status error in the interceptor', status);
         // for 401 or 403 logout the user and move the user to the login
         if (status === 401 || status === 403) {
