@@ -70,6 +70,7 @@ const CheckOutForm = ({ price, setShowModal, donation }) => {
                     name: user?.displayName,
                     email: user?.email,
                     transactionId: paymentIntent?.id,
+                    donatedAmount: price,
                     donation: donation
                 }
                 axiosSecure.post('/donator', data)

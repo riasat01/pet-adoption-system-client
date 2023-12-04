@@ -21,6 +21,8 @@ import Users from "../../pages/dashboard-pages/admin-pages/users/Users";
 import AdminRoute from "../admin-route/AdminRoute"
 import Pets from "../../pages/dashboard-pages/admin-pages/pets/Pets";
 import Donations from "../../pages/dashboard-pages/admin-pages/donations/Donations";
+import MyDonations from "../../pages/dashboard-pages/user-pages/my-donations/MyDonations";
+import AdoptionRequests from "../../pages/dashboard-pages/user-pages/adoption-requests/AdoptionRequests";
 
 const MainRoute = createBrowserRouter ([
     {
@@ -81,7 +83,8 @@ const MainRoute = createBrowserRouter ([
                 element: <PrivateRoute><MyPets></MyPets></PrivateRoute>
             },
             {
-                path: '/dashboard/adoption-request'
+                path: '/dashboard/adoption-request',
+                element: <PrivateRoute><AdoptionRequests></AdoptionRequests></PrivateRoute>
             },
             {
                 path: '/dashboard/create-campaign',
@@ -96,7 +99,8 @@ const MainRoute = createBrowserRouter ([
                 element: <PrivateRoute><EditCampaign></EditCampaign></PrivateRoute>
             },
             {
-                path: '/dashboard/donations'
+                path: '/dashboard/donations',
+                element: <PrivateRoute><MyDonations></MyDonations></PrivateRoute>
             },
 
             // admin only routes
