@@ -1,5 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../../custom-hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
+import swal from "sweetalert";
 
 
 const Donations = () => {
@@ -17,6 +19,46 @@ const Donations = () => {
 
         },
     })
+
+    const handleState = (id, info) => {
+        const update = !info
+        console.log(update);
+
+        axiosSecure.put(`/donation/togglePaused/${id}`, { state: update })
+            .then(res => {
+                console.log(res);
+                refetch();
+            })
+            .catch(error => {
+                console.log(error);
+            })
+    }
+
+    const handleDelete = id => {
+        swal({
+            title: "Are you sure?",
+            text: "Once deleted, you will not be able to recover this donation!",
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+            .then((willDelete) => {
+                if (willDelete) {
+                    axiosSecure.delete(`/donation/${id}`)
+                        .then(res => {
+                            console.log(res);
+                            swal("Poof! Donation has been deleted!", {
+                                icon: "success",
+                            });
+                            refetch();
+                        })
+                        .catch(error => console.log(error));
+                } else {
+                    swal("Your donation is safe!");
+                }
+            });
+    }
+
     return (
         <table className="w-full text-center mt-24">
             <thead>
@@ -38,13 +80,20 @@ const Donations = () => {
                         <td>{donation?.maxAmount}</td>
                         <td>{donation?.donatedAmount}</td>
                         <td>
-                            <button className="w-full px-5 py-2 rounded-2xl bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[1px_-1px_1rem_0px_pink] ">Pause</button>
+                            {
+                                donation?.isPaused ?
+                                    <button onClick={() => handleState(donation?._id, donation?.isPaused)} className='px-5 py-1 my-1 rounded-lg bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[0px_5px_2rem_1px_pink] font-comforta'>Resume</button>
+                                    :
+                                    <button onClick={() => handleState(donation?._id, donation?.isPaused)} className='px-5 py-1 my-1 rounded-lg bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[0px_5px_2rem_1px_pink] font-comforta'>Pause</button>
+                            }
                         </td>
                         <td>
-                            <button className="w-full px-5 py-2 rounded-2xl bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[1px_-1px_1rem_0px_pink] ">Edit</button>
+                            <Link to={`/dashboard/edit-campaign/${donation?._id}`}>
+                                <button className="w-full px-5 py-2 rounded-2xl bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[1px_-1px_1rem_0px_pink] ">Edit</button>
+                            </Link>
                         </td>
                         <td>
-                            <button className="w-full px-5 py-2 rounded-2xl bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[1px_-1px_1rem_0px_pink] ">Delete</button>
+                            <button onClick={() => handleDelete(donation?._id)} className="w-full px-5 py-2 rounded-2xl bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[1px_-1px_1rem_0px_pink] ">Delete</button>
                         </td>
                     </tr>)
                 }

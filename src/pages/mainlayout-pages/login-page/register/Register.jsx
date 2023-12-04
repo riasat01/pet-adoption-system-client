@@ -37,7 +37,7 @@ const Register = () => {
                 setUserName(name, photo)
                     .then(() => {
                         // console.log(`user name updated`);
-                        axiosPublic.post('/user', {imageURL: userCredential?.user?.photoURL, name: userCredential?.user?.displayName, email: userCredential?.user?.email})
+                        axiosPublic.post('/user', {imageURL: userCredential?.user?.photoURL, name: userCredential?.user?.displayName, email: userCredential?.user?.email, role: 'user'})
                         .then(res => {
                             console.log(res);
                             setLoading(false);

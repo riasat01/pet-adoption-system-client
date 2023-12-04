@@ -21,7 +21,7 @@ const MyPets = () => {
         axiosSecure.put(`/pets/updatestatus/${id}`)
             .then(res => {
                 console.log(res);
-                swal('Congratulations', 'successgully adopted', 'success');
+                swal('Congratulations', 'successfully updated adoption status', 'success');
                 refetch();
             })
             .catch(error => {
@@ -32,7 +32,7 @@ const MyPets = () => {
     const handleDelete = id => {
         swal({
             title: "Are you sure?",
-            text: "Once deleted, you will not be able to recover this imaginary file!",
+            text: "Once deleted, you will not be able to recover this pet!",
             icon: "warning",
             buttons: true,
             dangerMode: true,

@@ -12,6 +12,16 @@ const Users = () => {
             return res?.data;
         },
     })
+
+    const handleAdmin = (id, role) => {
+        console.log(id,role )
+        axiosSecure.put(`/user/makeAdmin/${id}`, null)
+        .then(res => {
+            console.log(res);
+            refetch()
+        })
+        .catch(error => console.log(error));
+    }
     return (
         <table className="w-full text-center mt-24">
             <thead>
@@ -31,7 +41,12 @@ const Users = () => {
                             <img className="h-10 w-10" src={user?.imageURL} alt={`image of ${user?.name}`} />
                         </td>
                         <td>
-                            <button className="w-full px-5 py-2 rounded-2xl bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[1px_-1px_1rem_0px_pink] ">Make Admin</button>
+                            {user?.role === 'admin'
+                                ?
+                                <p className="text-green-500">{user?.role}</p>
+                                :
+                                <button onClick={() => handleAdmin(user?._id, user?.role)} className="w-full px-5 py-2 rounded-2xl bg-gradient-to-tr from-pink-600 to-pink-400 text-lg font-semibold text-white border-2 hover:border-0 border-pink-500 hover:shadow-[1px_-1px_1rem_0px_pink] ">Make Admin</button>
+                            }
                         </td>
                     </tr>)
                 }
