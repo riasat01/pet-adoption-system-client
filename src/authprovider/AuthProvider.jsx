@@ -10,6 +10,7 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
+    // const [theme, setTheme] = useState('dark');
     const axiosSecure = useAxiosSecure();
 
     // create user with and password
@@ -78,10 +79,13 @@ const AuthProvider = ({ children }) => {
     }, [])
 
 
+    // useEffect(() => {
+    //     document.documentElement.setAttribute('data-theme', theme);
+    // }, [theme]);
 
-    const toggleTheme = () => {
-        setTheme(theme === 'light' ? 'dark' : 'light');
-    };
+    // const toggleTheme = () => {
+    //     setTheme(theme === 'light' ? 'dark' : 'light');
+    // };
 
     // context value
     const userInfo = {
@@ -94,8 +98,8 @@ const AuthProvider = ({ children }) => {
         setUserName,
         deleteAccount,
         logOut,
-        toggleTheme,
-        theme
+        // toggleTheme,
+        // theme
     };
 
     return (

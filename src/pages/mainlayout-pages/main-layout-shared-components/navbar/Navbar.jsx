@@ -3,8 +3,8 @@ import { Link, NavLink } from 'react-router-dom';
 import { BiSolidFoodMenu } from 'react-icons/bi';
 import { useContext, useState } from 'react';
 import swal from 'sweetalert';
-import { BsMoonStarsFill, BsSun } from 'react-icons/bs';
-import { useEffect } from 'react';
+// import { BsMoonStarsFill, BsSun } from 'react-icons/bs';
+// import { useEffect } from 'react';
 import { UserAuth } from '../../../../authprovider/AuthProvider';
 import Button from '../../../../shared-components/Button';
 
@@ -12,9 +12,9 @@ const Navabar = () => {
     // state to show or hide navbar on mobiles
     const [show, setShow] = useState(false);
     // toggler
-    const [toggle, setToggle] = useState(true);
+    // const [toggle, setToggle] = useState(true);
     // auth info and functions
-    const { user, logOut, loading, toggleTheme, theme } = useContext(UserAuth);
+    const { user, logOut, loading } = useContext(UserAuth);
 
 
     // sign out User
@@ -27,6 +27,9 @@ const Navabar = () => {
                 swal(`Error`, error.message, `error`);
             });
     }
+    // const handleTheme = () => {
+    //     toggleTheme();
+    // }
 
     // navlinks
     const navLlinks = <>
@@ -71,7 +74,7 @@ const Navabar = () => {
             </NavLink>
         </li>
     </>
-    useEffect(() => { }, [theme]);
+    // useEffect(() => { }, [theme]);
     return (
         <section className='fixed w-full inset-0 z-10 h-fit font-comforta'>
             <div className="flex justify-between items-center px-4 py-3 bg-slate-800 bg-opacity-60">
