@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosPublic = axios.create({
-    baseURL: 'http://localhost:5000' //https://pets-n-pals-server.vercel.app
+    baseURL: 'https://pets-n-pals-server.vercel.app' //   https://pets-n-pals-server.vercel.app/
 });
 
 const useAxiosPublic = () => {
