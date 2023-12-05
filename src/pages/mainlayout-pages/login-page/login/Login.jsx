@@ -5,9 +5,10 @@ import { FcGoogle } from 'react-icons/fc';
 import { UserAuth } from "../../../../authprovider/AuthProvider";
 import loginBg from '../../../../assets/images/login.jpg';
 import useAxiosPublic from "../../../../custom-hooks/useAxiosPublic";
+import { FaGithub } from "react-icons/fa";
 
 const Login = () => {
-    const { user, setLoading, loginWithEMail, continueWithGoogle } = useContext(UserAuth);
+    const { user, setLoading, loginWithEMail, continueWithGoogle, continueWithGithub } = useContext(UserAuth);
     const navigate = useNavigate();
     const axiosPublic = useAxiosPublic();
 
@@ -68,8 +69,9 @@ const Login = () => {
                 <fieldset className="border-t border-slate-600 my-6">
                     <legend className="text-center px-1 text-white">Or continue with</legend>
                 </fieldset>
-                <section className="flex justify-center items-center">
+                <section className="flex justify-center items-center gap-8">
                     <FcGoogle onClick={() => handlethirdPartySignIn(continueWithGoogle)} className="text-4xl w-fit"></FcGoogle>
+                    <FaGithub onClick={() => handlethirdPartySignIn(continueWithGithub)} className="text-4xl text-white w-fit"></FaGithub>
                 </section>
             </section>
 

@@ -1,4 +1,4 @@
-import { GoogleAuthProvider, createUserWithEmailAndPassword, deleteUser, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { GithubAuthProvider, GoogleAuthProvider, createUserWithEmailAndPassword, deleteUser, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import auth from "../firebase/firebase.config";
@@ -6,6 +6,7 @@ import useAxiosPublic from "../custom-hooks/useAxiosPublic";
 
 export const UserAuth = createContext({});
 const googleProvider = new GoogleAuthProvider();
+const githubProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
@@ -28,6 +29,11 @@ const AuthProvider = ({ children }) => {
     const continueWithGoogle = () => {
         setLoading(true);
         return signInWithPopup(auth, googleProvider);
+    }
+
+    const continueWithGithub = () => {
+        setLoading(true);
+        return signInWithPopup(auth, githubProvider);
     }
 
     // setting user name
@@ -87,6 +93,7 @@ const AuthProvider = ({ children }) => {
         userWithEmail,
         loginWithEMail,
         continueWithGoogle,
+        continueWithGithub,
         setUserName,
         deleteAccount,
         logOut
