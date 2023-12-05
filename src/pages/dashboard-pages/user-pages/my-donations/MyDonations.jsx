@@ -28,7 +28,7 @@ const MyDonations = () => {
             .then(res => {
                 console.log(res);
                 swal('congratulations', 'refund successful', 'success');
-                refetch;
+                refetch();
             })
             .catch(error => {
                 console.log(error);

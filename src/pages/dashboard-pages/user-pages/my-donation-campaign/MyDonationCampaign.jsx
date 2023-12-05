@@ -53,7 +53,8 @@ const MyDonationCampaign = () => {
                             <td>{donation?.maxAmount}</td>
                             <td>
                                 <section className="h-2 w-full rounded-lg bg-slate-400">
-                                    <section className={`h-2 w-[${percentage}%] bg-gradient-to-tr from-pink-600 to-pink-400 rounded-lg`}></section>
+                                    {/* <section className={`h-2 w-[${percentage}%] bg-gradient-to-tr from-pink-600 to-pink-400 rounded-lg`}></section> */}
+                                    <p>{percentage}%</p>
                                 </section>
                             </td>
                             <td>

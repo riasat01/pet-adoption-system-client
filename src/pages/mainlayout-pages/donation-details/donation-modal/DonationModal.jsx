@@ -33,7 +33,7 @@ const DonationModal = ({ showModal, setShowModal, donation }) => {
                     {
                         donation?.isPaused
                             ?
-                            <p>The donation is Paused</p>
+                            <p className='text-white text-2xl font-bold'>The donation is Paused</p>
                             :
                             <>
                                 <input onBlur={(e) => setPrice(e?.target?.value)} className="w-full text-white rounded-2xl py-2 px-4 bg-slate-400 bg-opacity-70" type="number" name="amount" placeholder="Enter Amount" id="amount" />

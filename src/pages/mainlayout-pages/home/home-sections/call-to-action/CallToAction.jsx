@@ -19,7 +19,7 @@ const CallToAction = () => {
     return (
         // <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 my-24 overflow-hidden" ref={actionRef}>
         <div className="w-full overflow-hidden">
-            <div className="mx-auto w-fit flex flex-nowrap gap-6 my-24" ref={actionRef}>
+            <div className="mx-auto w-fit flex flex-nowrap gap-6 mt-24 mb-8" ref={actionRef}>
                 {
                     // cardInfo?.map(info => <marquee className='w-fit' key={info?._id}><ActionCard info={info}></ActionCard></marquee>)
                     cardInfo?.map(info => <ActionCard key={info?._id} info={info}></ActionCard>)
