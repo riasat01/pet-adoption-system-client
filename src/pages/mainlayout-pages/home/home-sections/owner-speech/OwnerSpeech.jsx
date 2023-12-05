@@ -1,8 +1,10 @@
 import owner from '../../../../../assets/images/owner.jpg';
+import SectionTitle from '../../../main-layout-shared-components/section-title/SectionTitle';
 
 const FuturePlans = () => {
     return (
         <section className='mt-24'>
+            <SectionTitle title={'Owner Speech'}></SectionTitle>
             <div className="h-fit flex flex-col md:flex-row justify-between items-center p-4 md:p-10 lg:p-16 mx-4 md:mx-12 lg:mx-24 bg-gradient-to-tr from-pink-600 to-pink-600">
                 <section className='relative rounded-lg border-pink-300 border-2 w-64 md:w-96 h-64 md:h-96'>
                     <img className='absolute rounded-lg top-0 md:-top-4 hover:-top-2 ring-0 md:-right-4 hover:-right-2 w-64 md:w-96 h-64 md:h-96' src={owner} alt="admin" />

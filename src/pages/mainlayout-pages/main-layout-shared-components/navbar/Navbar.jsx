@@ -3,16 +3,13 @@ import { Link, NavLink } from 'react-router-dom';
 import { BiSolidFoodMenu } from 'react-icons/bi';
 import { useContext, useState } from 'react';
 import swal from 'sweetalert';
-// import { BsMoonStarsFill, BsSun } from 'react-icons/bs';
-// import { useEffect } from 'react';
 import { UserAuth } from '../../../../authprovider/AuthProvider';
 import Button from '../../../../shared-components/Button';
 
 const Navabar = () => {
     // state to show or hide navbar on mobiles
     const [show, setShow] = useState(false);
-    // toggler
-    // const [toggle, setToggle] = useState(true);
+
     // auth info and functions
     const { user, logOut, loading } = useContext(UserAuth);
 
@@ -27,9 +24,6 @@ const Navabar = () => {
                 swal(`Error`, error.message, `error`);
             });
     }
-    // const handleTheme = () => {
-    //     toggleTheme();
-    // }
 
     // navlinks
     const navLlinks = <>
@@ -74,7 +68,6 @@ const Navabar = () => {
             </NavLink>
         </li>
     </>
-    // useEffect(() => { }, [theme]);
     return (
         <section className='fixed w-full inset-0 z-10 h-fit font-comforta'>
             <div className="flex justify-between items-center px-4 py-3 bg-slate-800 bg-opacity-60">
@@ -91,7 +84,7 @@ const Navabar = () => {
                             }
                             {
                                 loading ?
-                                    <span className="loading loading-infinity loading-lg"></span>
+                                    <p className='text-white animate-pulse'>loading...</p>
                                     :
                                     user ?
                                         <section className="flex gap-6 items-center">
@@ -154,7 +147,7 @@ const Navabar = () => {
                 <section className=' hidden md:block'>
                     {
                         loading ?
-                            <span className="loading loading-infinity loading-lg"></span>
+                        <p className='text-white animate-pulse'>loading...</p>
                             :
                             user ?
                                 <section className="flex gap-6 items-center">

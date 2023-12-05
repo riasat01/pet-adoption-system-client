@@ -1,16 +1,16 @@
 import axios from "axios";
 import { useContext } from "react";
 import { UserAuth } from "../authprovider/AuthProvider";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const axiosSecure = axios.create({
-    baseURL: 'https://pets-n-pals-server.vercel.app', //https://pets-n-pals-server.vercel.app
+    baseURL: 'http://localhost:5000', //https://pets-n-pals-server.vercel.app
     withCredentials: true
 });
 
 const useAxiosSecure = () => {
     const { logOut } = useContext(UserAuth);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     axiosSecure.interceptors.request.use(function (config) {
         const token = localStorage.getItem('access-token')
@@ -30,7 +30,8 @@ const useAxiosSecure = () => {
         // for 401 or 403 logout the user and move the user to the login
         if (status === 401 || status === 403) {
             try {
-                logOut();
+                await logOut();
+                navigate('/login');
             } catch (error) {
                 console.log(error);
             }

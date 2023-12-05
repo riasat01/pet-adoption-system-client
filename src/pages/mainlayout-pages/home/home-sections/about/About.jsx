@@ -1,8 +1,10 @@
 import about_bg from '../../../../../assets/images/about.jpg'
+import SectionTitle from '../../../main-layout-shared-components/section-title/SectionTitle';
 
 const About = () => {
     return (
         <section className='mt-24'>
+            <SectionTitle title={'About'}></SectionTitle>
             <div style={{
                 backgroundImage: `url(${about_bg}), linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1))`,
                 backgroundBlendMode: 'overlay',

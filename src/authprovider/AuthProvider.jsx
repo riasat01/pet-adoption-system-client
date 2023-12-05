@@ -2,7 +2,7 @@ import { GoogleAuthProvider, createUserWithEmailAndPassword, deleteUser, onAuthS
 import { createContext, useEffect, useState } from "react";
 import PropTypes from 'prop-types';
 import auth from "../firebase/firebase.config";
-import useAxiosSecure from "../custom-hooks/useAxiosSecure";
+import useAxiosPublic from "../custom-hooks/useAxiosPublic";
 
 export const UserAuth = createContext({});
 const googleProvider = new GoogleAuthProvider();
@@ -10,8 +10,7 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
-    // const [theme, setTheme] = useState('dark');
-    const axiosSecure = useAxiosSecure();
+    const axiosPublic = useAxiosPublic();
 
     // create user with and password
     const userWithEmail = (email, password) => {
@@ -62,12 +61,12 @@ const AuthProvider = ({ children }) => {
             setLoading(false);
             // if user exitst then issue a token
             if (loggeduser.email) {
-                axiosSecure.post('/jwt', loggeduser)
+                axiosPublic.post('/jwt', loggeduser)
                     .then(res => {
                         console.log('token response', res.data);
                     })
             } else {
-                axiosSecure.post('/logout', loggeduser)
+                axiosPublic.post('/logout', loggeduser)
                     .then(res => {
                         console.log(res.data);
                     })
@@ -76,17 +75,10 @@ const AuthProvider = ({ children }) => {
         return () => {
             unsubscsribe();
         }
-    }, [])
+    }, [user?.email])
 
 
-    // useEffect(() => {
-    //     document.documentElement.setAttribute('data-theme', theme);
-    // }, [theme]);
-
-    // const toggleTheme = () => {
-    //     setTheme(theme === 'light' ? 'dark' : 'light');
-    // };
-
+    
     // context value
     const userInfo = {
         user,
@@ -97,9 +89,7 @@ const AuthProvider = ({ children }) => {
         continueWithGoogle,
         setUserName,
         deleteAccount,
-        logOut,
-        // toggleTheme,
-        // theme
+        logOut
     };
 
     return (

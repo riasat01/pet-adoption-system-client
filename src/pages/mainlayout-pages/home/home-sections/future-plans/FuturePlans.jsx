@@ -1,8 +1,10 @@
 import future_bg from '../../../../../assets/images/future-bg.jpg';
+import SectionTitle from '../../../main-layout-shared-components/section-title/SectionTitle';
 
 const FuturePlans = () => {
     return (
         <section className='mt-16'>
+            <SectionTitle title={'Future Plans'}></SectionTitle>
             <div style={{
                 backgroundImage: `url(${future_bg}), linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1))`,
                 backgroundBlendMode: 'overlay',

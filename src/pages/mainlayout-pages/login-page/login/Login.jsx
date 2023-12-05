@@ -31,7 +31,7 @@ const Login = () => {
     }
 
     const handlethirdPartySignIn = (callback) => {
-        console.log(callback, typeof callback);
+        // console.log(callback, typeof callback);
         callback()
             .then(userCredential => {
                 console.log(userCredential.user);
@@ -39,7 +39,7 @@ const Login = () => {
                     .then(res => {
                         console.log(res);
                         setLoading(false);
-                        swal(`Congratulation ${userCredential?.user?.user?.displayName}`, `You have successfully signed in with Google`, `success`)
+                        swal(`Congratulation ${userCredential?.user?.displayName}`, `You have successfully signed in with Google`, `success`)
                         location?.state ? navigate(`${location?.state}`) : navigate(`/`);
                     })
 

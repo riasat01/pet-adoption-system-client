@@ -3,11 +3,12 @@ import useAdmin from "../../custom-hooks/useAdmin";
 import { BsFillMenuButtonWideFill } from "react-icons/bs";
 import { IoCloseCircleOutline } from "react-icons/io5";
 import { useState } from "react";
+import SectionTitle from "../../pages/mainlayout-pages/main-layout-shared-components/section-title/SectionTitle";
 
 
 const Dashboard = () => {
     const [isAdmin] = useAdmin();
-    console.log(isAdmin)
+    // console.log(isAdmin)
     const [showDrawer, setShowDrawer] = useState(false);
 
     return (
@@ -53,7 +54,7 @@ const Dashboard = () => {
                                 </NavLink>
                             </li>
                             <li>
-                                <NavLink to="/dashboard"
+                                <NavLink to="/dashboard/my-pets"
                                     className={({ isPending, isActive }) => isPending ? "pending" : isActive ? 'bg-slate-400 bg-opacity-50 px-8 py-2 duration-500 rounded-lg' : ''}>
                                     My added pets
                                 </NavLink>
@@ -92,7 +93,7 @@ const Dashboard = () => {
                                     </NavLink>
                                 </li>
                                 <li>
-                                    <NavLink to="/dashboard"
+                                    <NavLink to="/dashboard/my-pets"
                                         className={({ isPending, isActive }) => isPending ? "pending" : isActive ? 'bg-slate-400 bg-opacity-50 px-8 py-2 duration-500 rounded-lg' : ''}>
                                         My added pets
                                     </NavLink>
@@ -161,6 +162,7 @@ const Dashboard = () => {
             </div>
             {/* dashboard content */}
             <div className="flex-1 p-0">
+                <SectionTitle title={isAdmin ? 'Admin Dashboard' : 'User Dashboard'}></SectionTitle>
                 <Outlet></Outlet>
             </div>
         </div>
